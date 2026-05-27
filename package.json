@@ -1,0 +1,9 @@
+{
+  "name": "honda-rearview-camera-recall-checker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "preview": "node server.js",
+    "check": "node --check app.js && node --check server.js"
+  }
+}

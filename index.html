@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NHTSA Honda Rearview Camera Recall Checker</title>
+    <meta
+      name="description"
+      content="Check Honda and Acura rearview camera recall matches from NHTSA by model year, make, and model. Verify exact open recall status with the official NHTSA VIN lookup."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://example.com/" />
+    <meta property="og:title" content="NHTSA Honda Rearview Camera Recall Checker" />
+    <meta
+      property="og:description"
+      content="A fast checker for Honda rearview camera recall matches using public NHTSA recall data."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com/" />
+    <meta name="theme-color" content="#0f1720" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "NHTSA Honda Rearview Camera Recall Checker",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "description": "Check Honda and Acura rearview camera recall matches from NHTSA by model year, make, and model.",
+        "url": "https://example.com/",
+        "isAccessibleForFree": true
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I know if my Honda is affected by a rearview camera recall?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Start by checking the model year, make, and model against NHTSA recall records. For the exact open recall status of a specific vehicle, use the 17-character VIN on the official NHTSA recall lookup."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool check my VIN?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The tool does not send or store VINs. It can create a link to the official NHTSA VIN lookup, where you can verify the exact status."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What NHTSA data does this checker use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It uses the public NHTSA recallsByVehicle API, which returns recalls for a selected model year, make, and model."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Recall checker home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Recall Camera Check</span>
+      </a>
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="#checker">Checker</a>
+        <a href="#recent">Recent recalls</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="tool-hero" id="checker">
+        <div class="hero-copy">
+          <p class="eyebrow">NHTSA Honda rearview camera recall</p>
+          <h1>Honda Rearview Camera Recall Checker</h1>
+          <p class="lede">
+            Check public NHTSA recall matches for Honda and Acura vehicles by year,
+            make, and model. Use the official VIN lookup for the final vehicle-specific result.
+          </p>
+        </div>
+
+        <div class="visual-panel" aria-hidden="true">
+          <div class="camera-shell">
+            <div class="camera-screen">
+              <span class="lane lane-a"></span>
+              <span class="lane lane-b"></span>
+              <span class="lane lane-c"></span>
+              <span class="car-shape"></span>
+              <span class="scan-line"></span>
+            </div>
+            <div class="camera-base"></div>
+          </div>
+        </div>
+
+        <form class="checker-card" id="recall-form">
+          <div class="field-grid">
+            <label>
+              <span>Model year</span>
+              <select id="year" name="year" autocomplete="off"></select>
+            </label>
+            <label>
+              <span>Make</span>
+              <select id="make" name="make" autocomplete="off">
+                <option value="honda">Honda</option>
+                <option value="acura">Acura</option>
+              </select>
+            </label>
+            <label>
+              <span>Model</span>
+              <select id="model" name="model" autocomplete="off"></select>
+            </label>
+          </div>
+
+          <label class="vin-field">
+            <span>VIN for official lookup (optional)</span>
+            <input
+              id="vin"
+              name="vin"
+              inputmode="latin"
+              maxlength="17"
+              placeholder="17-character VIN"
+              autocomplete="off"
+            />
+          </label>
+
+          <div class="actions">
+            <button class="primary-button" type="submit">Check NHTSA recalls</button>
+            <a
+              class="secondary-button"
+              href="https://www.nhtsa.gov/recalls"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open NHTSA
+            </a>
+          </div>
+        </form>
+      </section>
+
+      <section class="quick-picks" aria-label="Quick checks">
+        <button type="button" data-preset="honda|prologue|2024">2024 Honda Prologue</button>
+        <button type="button" data-preset="honda|prologue|2025">2025 Honda Prologue</button>
+        <button type="button" data-preset="acura|zdx|2024">2024 Acura ZDX</button>
+        <button type="button" data-preset="honda|odyssey|2019">2019 Honda Odyssey</button>
+        <button type="button" data-preset="honda|pilot|2020">2020 Honda Pilot</button>
+        <button type="button" data-preset="honda|passport|2020">2020 Honda Passport</button>
+      </section>
+
+      <section class="results-layout" aria-live="polite">
+        <div class="results-panel" id="results">
+          <div class="empty-state">
+            <h2>Run a recall check</h2>
+            <p>
+              Select a vehicle above to search NHTSA recall records and highlight
+              camera, rear visibility, and back-over prevention matches.
+            </p>
+          </div>
+        </div>
+
+        <aside class="source-panel">
+          <h2>Official sources</h2>
+          <p>
+            This page uses NHTSA public recall records. Exact open recall status
+            should be verified with your VIN on NHTSA.gov or with a Honda or Acura dealer.
+          </p>
+          <a href="https://www.nhtsa.gov/recalls" target="_blank" rel="noreferrer">
+            NHTSA VIN recall lookup
+          </a>
+          <a href="https://www.nhtsa.gov/nhtsa-datasets-and-apis" target="_blank" rel="noreferrer">
+            NHTSA datasets and APIs
+          </a>
+          <div class="ad-slot" aria-label="Advertisement placeholder">
+            <span>Advertisement</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="recent-section" id="recent">
+        <div class="section-heading">
+          <p class="eyebrow">Recent camera-related recalls</p>
+          <h2>Why this checker exists</h2>
+        </div>
+        <div class="recall-list">
+          <article>
+            <span class="tag">26V306000</span>
+            <h3>2024-2025 Honda Prologue and 2024 Acura ZDX</h3>
+            <p>
+              NHTSA records describe a rearview camera screen that may display a distorted
+              or blank image. Dealers are expected to replace the rearview camera free of charge.
+            </p>
+          </article>
+          <article>
+            <span class="tag">26V112000</span>
+            <h3>2024 Honda Prologue and 2024 Acura ZDX</h3>
+            <p>
+              NHTSA records describe a software issue that may cause the instrument panel
+              display to fail and the rearview camera to show a blank screen in reverse.
+            </p>
+          </article>
+          <article>
+            <span class="tag">23V431000</span>
+            <h3>2018-2023 Odyssey, 2019-2022 Pilot, 2019-2023 Passport</h3>
+            <p>
+              NHTSA records describe a connector issue where the rearview camera image
+              may not appear on the display.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="faq-section" id="faq">
+        <div class="section-heading">
+          <p class="eyebrow">Questions</p>
+          <h2>Honda rearview camera recall FAQ</h2>
+        </div>
+        <details>
+          <summary>Can this page tell me if my exact Honda has an open recall?</summary>
+          <p>
+            It can show recall matches for a model year, make, and model. To confirm the exact
+            status of one vehicle, enter your VIN on the official NHTSA recall page or contact a dealer.
+          </p>
+        </details>
+        <details>
+          <summary>Is a rearview camera recall repaired for free?</summary>
+          <p>
+            Safety recall remedies are generally performed free of charge by dealers. Always read
+            the remedy text in the NHTSA record and confirm with your dealer before scheduling service.
+          </p>
+        </details>
+        <details>
+          <summary>Why do some results show Acura?</summary>
+          <p>
+            Acura is part of American Honda Motor Co. Some NHTSA campaigns include both Honda
+            and Acura vehicles, especially the Prologue and ZDX camera-related recalls.
+          </p>
+        </details>
+        <details>
+          <summary>Does this site store my VIN?</summary>
+          <p>
+            No. The optional VIN field only builds a direct NHTSA lookup link in your browser.
+            It is not sent to this website or stored.
+          </p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Last updated: May 26, 2026. Data source: NHTSA public recall records.</p>
+      <p>This tool is informational and is not an official recall determination.</p>
+      <p><a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
