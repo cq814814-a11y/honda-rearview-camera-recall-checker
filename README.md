@@ -16,7 +16,11 @@ An English static tool page targeting:
 
 ## Before Deployment
 
-Replace `https://example.com/` in:
+Current production URL:
+
+`https://honda-rearview-camera-recall-checker.pages.dev/`
+
+If you move to a custom domain later, update:
 
 - `index.html`
 - `robots.txt`

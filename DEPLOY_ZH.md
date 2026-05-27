@@ -18,7 +18,7 @@ npm run preview
 
 ## 上线前要改的地方
 
-把 `https://example.com/` 换成你的真实域名：
+当前域名已设置为 `https://honda-rearview-camera-recall-checker.pages.dev/`：
 
 - `index.html`
 - `privacy.html`
